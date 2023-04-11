@@ -18,6 +18,16 @@
                 @if ($errors->has('hotel_id'))
                     <span class="text-danger">{{ $errors->first('hotel_id') }}</span>
                 @endif
+                <label  for="user_id">Показник користувача</label>
+                <select name="user_id" class="form-control" id="user_id">
+                    <option value="">Оберіть користувача</option>
+                    @foreach($users as $id => $name)
+                        <option value="{{ $id }}" {{ $hotelComment->user_id == $id ? 'selected' : '' }}>{{ $name }}</option>
+                    @endforeach
+                </select>
+                @if ($errors->has('user_id'))
+                    <div class="text-danger">{{ $errors->first('user_id') }}</div>
+                @endif
             </div>
             <label for="description" class="col-md-2 col-form-label">Коментар</label>
             <div class="col-md-10">

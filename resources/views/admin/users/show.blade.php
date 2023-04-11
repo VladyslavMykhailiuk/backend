@@ -5,9 +5,9 @@
 @section('section')
     <div class="d-flex h-100">
         <div class="">
-            <div class="card h-100 h4 m-3 w-100">
+            <div class="card h-100 h4 m-3" style="width: 1500px">
                 <div class="d-flex">
-                        <div class="card h-25 h5 m-3">
+                        <div class="card  h5 m-3">
                             <div class="card-body">
                                 <div><strong>Показник юзера:</strong></div>
                                 <h4 class="card-title">{{$user->id}}</h4>

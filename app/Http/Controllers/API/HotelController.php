@@ -16,10 +16,17 @@ class HotelController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-      $hotels = Hotel::all();
-      return HotelResource::collection($hotels);
+        $searchTerm = $request->query('search');
+
+        if (!empty($searchTerm)) {
+            $hotels = Hotel::where('name', 'like', "%$searchTerm%")->get();
+        } else {
+            $hotels = Hotel::all();
+        }
+
+        return HotelResource::collection($hotels);
     }
 
     public function show(Hotel $hotel)

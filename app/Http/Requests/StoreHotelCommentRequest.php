@@ -24,6 +24,7 @@ class StoreHotelCommentRequest extends FormRequest
         return [
             'hotel_id'=>'required|integer|exists:hotels,id',
             'description' => 'required|min:30|max:3000|string',
+            'user_id'=>'required|integer|exists:users,id',
         ];
     }
 
@@ -37,6 +38,9 @@ class StoreHotelCommentRequest extends FormRequest
             'description.min' => 'Поле опис повинно бути не менше 30 символів',
             'description.max' => 'Поле адреса повинно бути не більше 3000 символів',
             'description.string' => 'Поле опису повинно складатися з букв',
+            'user_id.required' => 'Поле айді користувача є обов\'язковим',
+            'user_id.integer' => 'Поле айді користувача повинно бути числом',
+            'user_id.exists' => 'Поле айді користувача некоректно введено',
         ];
     }
 }

@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\HotelCommentController;
 use App\Http\Controllers\HotelController;
-use App\Http\Controllers\RoomCommentController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -79,19 +78,6 @@ Route::group([
         Route::get('/{hotelComment}/edit',[HotelCommentController::class,'edit'])->name('edit');
         Route::put('/{hotelComment}',[HotelCommentController::class,'update'])->name('update');
         Route::delete('/{hotelComment}',[HotelCommentController::class,'destroy'])->name('destroy');
-    }
-    );
-
-    Route::group([
-        'as'=>'roomcomments.',
-        'prefix'=>'roomcomments',
-    ],function (){
-        Route::get('/',[RoomCommentController::class,'index'])->name('index');
-        Route::get('/create',[RoomCommentController::class,'create'])->name('create');
-        Route::post('/',[RoomCommentController::class,'store'])->name('store');
-        Route::get('/{roomComment}/edit',[RoomCommentController::class,'edit'])->name('edit');
-        Route::put('/{roomComment}',[RoomCommentController::class,'update'])->name('update');
-        Route::delete('/{roomComment}',[RoomCommentController::class,'destroy'])->name('destroy');
     }
     );
 

@@ -5,7 +5,7 @@
 @section('section')
     <div class="d-flex h-100">
         <div class="">
-            <div class="card h-100 h4 m-3" style="">
+            <div class="card h-100 h4 m-3" style="max-width: 1500px">
                 <div class="card-body">
                     <div><strong>Показник кімнати:</strong></div>
                     <h4 class="card-title">{{$room->id}}</h4>
