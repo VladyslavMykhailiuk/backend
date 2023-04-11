@@ -6,6 +6,7 @@ use App\Http\Requests\StoreHotelCommentRequest;
 use App\Http\Requests\UpdateHotelCommentRequest;
 use App\Models\Hotel;
 use App\Models\HotelComment;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HotelCommentController extends Controller
@@ -26,7 +27,9 @@ class HotelCommentController extends Controller
     {
         $hotel = new Hotel;
         $hotels = $hotel->getHotelList();
-        return view('/admin/hotelcomments/create',compact('hotels'));
+        $user = new User;
+        $users = $user->getUserList();
+        return view('/admin/hotelcomments/create',compact(['hotels','users']));
     }
 
     /**
@@ -59,7 +62,9 @@ class HotelCommentController extends Controller
     {
         $hotel = new Hotel;
         $hotels = $hotel->getHotelList();
-        return view('/admin/hotelcomments/edit',compact('hotelComment','hotels'));
+        $user = new User;
+        $users = $user->getUserList();
+        return view('/admin/hotelcomments/edit',compact(['hotelComment','hotels','users']));
     }
 
     /**

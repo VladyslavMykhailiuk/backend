@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreHotelCommentRequest;
 use App\Http\Requests\StoreHotelRequest;
+use App\Http\Requests\UpdateHotelCommentRequest;
 use App\Http\Requests\UpdateHotelRequest;
 use App\Http\Resources\HotelCommentResource;
 use App\Models\HotelComment;
@@ -21,8 +23,34 @@ class HotelCommentController extends Controller
         return HotelCommentResource::collection($hotelComments);
     }
 
-//    public function show(Hotel $hotel)
-//    {
-//        return new HotelResource($hotel);
-//    }
+    public function store(StoreHotelCommentRequest $request)
+    {
+        $data = $request->validated();
+
+        $hotelComment = HotelComment::create($data);
+    }
+
+
+    public function show($id)
+    {
+        $hotelComment = HotelComment::findOrFail($id);
+        return new HotelCommentResource($hotelComment);
+    }
+
+    public function update(UpdateHotelCommentRequest $request, $id)
+    {
+        $hotelComment = HotelComment::findOrFail($id);
+        $data = $request->validated();
+        $hotelComment->update($data);
+        return new HotelCommentResource($hotelComment);
+    }
+
+    public function destroy(HotelComment $hotelComment,$id)
+    {
+        $hotelComment = HotelComment::findOrFail($id);
+        $hotelComment->delete($hotelComment);
+    }
+
+
+
 }

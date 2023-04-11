@@ -42,11 +42,6 @@
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
             <li><a class="dropdown-item" href="{{route('admin.hotelcomments.index')}}">Список коментарів до готелів</a></li>
             <li><a class="dropdown-item" href="{{route('admin.hotelcomments.create')}}">Додати коментар до готелю</a></li>
-            <li>
-                <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="{{route('admin.roomcomments.index')}}">Список коментарів до кімнат</a></li>
-            <li><a class="dropdown-item" href="{{route('admin.roomcomments.create')}}">Додати коментар до кімнати</a></li>
     </div>
 </ul>
 @can('view',auth()->user())

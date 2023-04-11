@@ -18,6 +18,8 @@ class HotelCommentResource extends JsonResource
             'id'=> $this->id,
             'hotel_id'=> $this->hotel_id,
             'description'=> $this->description,
+            'username' => $this->user->name,
+            'user_id'=> $this->user->id,
         ];
     }
 }

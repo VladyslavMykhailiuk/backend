@@ -27,6 +27,12 @@ Route::get('/hotels/{hotel}',[HotelController::class,'show']);
 
 Route::get('/hotels/{id}/rooms', [RoomController::class, 'index']);
 Route::get('/hotels/{id}/hotelComments', [HotelCommentController::class, 'index']);
+Route::post('/reserve-room',[RoomController::class,'sendReservationEmail']);
+
+Route::post('/addComment',[HotelCommentController::class,'store']);
+Route::get('/hotelComments/{id}', [HotelCommentController::class, 'show']);
+Route::put('/hotelComments/{id}',[HotelCommentController::class,'update']);
+Route::delete('/hotelComments/{id}',[HotelCommentController::class,'destroy']);
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //    return $request->user();
 //});

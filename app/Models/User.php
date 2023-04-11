@@ -14,6 +14,10 @@ class User extends Authenticatable
 
     protected $guarded = false;
 
+    public function getUserList() {
+        return User::pluck('name', 'id')->toArray();
+    }
+
     /**
      * The attributes that are mass assignable.
      *
