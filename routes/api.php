@@ -33,13 +33,8 @@ Route::post('/addComment',[HotelCommentController::class,'store']);
 Route::get('/hotelComments/{id}', [HotelCommentController::class, 'show']);
 Route::put('/hotelComments/{id}',[HotelCommentController::class,'update']);
 Route::delete('/hotelComments/{id}',[HotelCommentController::class,'destroy']);
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
 
-//Route::group(['middleware'=>'auth:sanctum'],function (){
-//    Route::get('/get',[GetController::class,'__invoke']);
-//});
+Route::get('/pdf-download/{hotel}', [HotelController::class,'downloadPDF']);
 
 
 
