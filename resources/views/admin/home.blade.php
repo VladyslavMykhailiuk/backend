@@ -4,5 +4,7 @@
 @endsection
 
 @section('section')
-    <h1>Вітаю в адмін панелі нашого сайту!</h1>
+    <div class="d-flex justify-content-center align-items-center">
+        <h1 style="margin-top: 25%">Вітаю в адмін панелі нашого сайту!</h1>
+    </div>
 @endsection
