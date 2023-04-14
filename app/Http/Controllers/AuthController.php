@@ -43,7 +43,6 @@ class AuthController extends Controller
             ->where('name', $deviceName)
             ->delete();
         $token = $user->createToken($deviceName)->plainTextToken;
-
         return [
             'token' => $token,
             'user' => new UserResource($user),

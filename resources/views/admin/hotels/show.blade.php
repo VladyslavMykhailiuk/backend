@@ -24,6 +24,17 @@
                              class="m-3" alt="Photo">
                     @endforeach
                 </div>
+                <div class="d-flex h-100 row">
+                    @foreach($rooms as $room)
+                        <div class="card h5 m-3 col-4" style="width: 22rem;">
+                            <div class="card-body">
+                                <div><strong>Назва:</strong></div>
+                                <h5 class="card-title">{{$room->name}}</h5>
+                                <a href="{{route('admin.rooms.show',$room->id)}}" class="btn btn-danger mt-4">Відкрити інформацію про кімнату</a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
                    <a href="{{route('admin.hotels.edit',$hotel->id)}}" class="btn btn-danger mt-4">Оновити інформацію про
                        готель</a>
                    <form action="{{route('admin.hotels.destroy',$hotel->id)}}" method="post">

@@ -12,18 +12,6 @@ use Illuminate\Support\Facades\Storage;
 
 class RoomController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $rooms = Room::all();
-        return view('/admin/rooms/index',compact('rooms'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $hotel = new Hotel;
@@ -61,7 +49,7 @@ class RoomController extends Controller
                 $room->photos()->save($photo);
             }
         }
-        return redirect()->route('admin.rooms.index');
+        return redirect()->route('admin.hotels');
     }
 
     /**
@@ -132,6 +120,6 @@ class RoomController extends Controller
     public function destroy(Room $room)
     {
         $room->delete();
-        return redirect()->route('admin.rooms.index');
+        return redirect()->route('admin.hotels.index');
     }
 }

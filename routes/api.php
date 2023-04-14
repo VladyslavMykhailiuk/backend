@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\HotelCommentController;
 use App\Http\Controllers\API\HotelController;
+use App\Http\Controllers\API\ReservationController;
 use App\Http\Controllers\API\RoomController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
@@ -35,6 +36,8 @@ Route::put('/hotelComments/{id}',[HotelCommentController::class,'update']);
 Route::delete('/hotelComments/{id}',[HotelCommentController::class,'destroy']);
 
 Route::get('/pdf-download/{hotel}', [HotelController::class,'downloadPDF']);
+
+Route::post('/add-reservation',[ReservationController::class,'store']);
 
 
 

@@ -26,7 +26,7 @@ class RoomController extends Controller
         if ($request->has('persons')) {
             $persons = $request->query('persons');
             if (!empty($persons)) {
-                $query->where('persons', $persons);
+                $query->where('persons','>=', $persons);
             }
         }
 

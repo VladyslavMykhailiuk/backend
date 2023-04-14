@@ -16,7 +16,7 @@
                                 <div><strong>E-mail:</strong></div>
                                 <h5 class="card-title">{{$user->email}}</h5>
                                 <div><strong>Показник ролі:</strong></div>
-                                <h5 class="card-title">{{$user->role_id}}</h5>
+                                <h5 class="card-title">{{$user->role->name}}</h5>
                             </div>
                         </div>
                 </div>

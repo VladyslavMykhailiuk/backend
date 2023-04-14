@@ -28,8 +28,8 @@ class UpdateRoomRequest extends FormRequest
             'class' => 'sometimes|required|min:3|max:30|string',
             'persons' => 'sometimes|required|integer',
             'price' => 'sometimes|required|integer',
-            'arrival_date' => 'sometimes|required|date',
-            'departure_day' => 'sometimes|required|date',
+            'arrival_date' => 'required|date|after_or_equal:today',
+            'departure_day' => 'required|date|after_or_equal:today',
             'images.*' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
@@ -61,7 +61,10 @@ class UpdateRoomRequest extends FormRequest
             'arrival_date.date' => 'Поле дати заїзду повинно бути датою',
             'departure_day.required' => 'Поле дати виїзду є обов\'язковим',
             'departure_day.date' => 'Поле дати виїзду повинно бути датою',
-            'images' => 'Ви завантажили не картинку'
+            'images' => 'Ви завантажили не картинку',
+            'departure_day.after_or_equal' => 'Поле дати виїзду повинно не бути в минулому',
+            'arrival_date.after_or_equal' => 'Поле дати заїзду повинно не бути в минулому',
+
         ];
     }
 }

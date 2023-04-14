@@ -6,6 +6,7 @@ use App\Http\Requests\StoreHotelRequest;
 use App\Http\Requests\UpdateHotelRequest;
 use App\Models\Hotel;
 use App\Models\HotelPhoto;
+use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -64,7 +65,8 @@ $data = $request->validated();
      */
     public function show(Hotel $hotel)
     {
-      return view('/admin/hotels/show',compact('hotel'));
+        $rooms = Room::where('hotel_id', $hotel->id)->get();
+        return view('/admin/hotels/show', compact('hotel', 'rooms'));
     }
 
     /**

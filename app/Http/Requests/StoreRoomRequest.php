@@ -28,8 +28,8 @@ class StoreRoomRequest extends FormRequest
             'class' => 'required|min:3|max:30|string',
             'persons' => 'required|integer',
             'price' => 'required|integer',
-            'arrival_date' => 'required|date',
-            'departure_day' => 'required|date',
+            'arrival_date' => 'required|date|after_or_equal:today',
+            'departure_day' => 'required|date|after_or_equal:today',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
@@ -58,9 +58,11 @@ class StoreRoomRequest extends FormRequest
             'price.integer' => 'Поле к-сті людей повинно бути числом',
             'arrival_date.required' => 'Поле дати заїзду є обов\'язковим',
             'arrival_date.date' => 'Поле дати заїзду повинно бути датою',
+            'arrival_date.after_or_equal' => 'Поле дати заїзду повинно не бути в минулому',
             'departure_day.required' => 'Поле дати виїзду є обов\'язковим',
             'departure_day.date' => 'Поле дати виїзду повинно бути датою',
-            'images' => 'Ви завантажили не картинку'
+            'images' => 'Ви завантажили не картинку',
+            'departure_day.after_or_equal' => 'Поле дати виїзду повинно не бути в минулому',
         ];
     }
 }

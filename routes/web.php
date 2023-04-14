@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HotelCommentController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -58,13 +59,27 @@ Route::group([
         'as'=>'rooms.',
         'prefix'=>'rooms',
     ],function (){
-        Route::get('/',[RoomController::class,'index'])->name('index');
         Route::get('/create',[RoomController::class,'create'])->name('create');
         Route::post('/',[RoomController::class,'store'])->name('store');
         Route::get('/{room}',[RoomController::class,'show'])->name('show');
         Route::get('/{room}/edit',[RoomController::class,'edit'])->name('edit');
         Route::put('/{room}',[RoomController::class,'update'])->name('update');
         Route::delete('/{room}',[RoomController::class,'destroy'])->name('destroy');
+    }
+    );
+
+    Route::group([
+        'as'=>'reservations.',
+        'prefix'=>'reservations',
+    ],function (){
+        Route::get('/',[ReservationController::class,'index'])->name('index');
+        Route::get('/create',[ReservationController::class,'create'])->name('create');
+        Route::post('/',[ReservationController::class,'store'])->name('store');
+        Route::get('/{reservation}',[ReservationController::class,'show'])->name('show');
+        Route::get('/{reservation}/edit',[ReservationController::class,'edit'])->name('edit');
+        Route::put('/{reservation}',[ReservationController::class,'update'])->name('update');
+        Route::delete('/{reservation}',[ReservationController::class,'destroy'])->name('destroy');
+        Route::get('/downloadpdf',[ReservationController::class,'download'])->name('downloadPDF');
     }
     );
 
