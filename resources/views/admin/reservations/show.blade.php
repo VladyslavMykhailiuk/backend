@@ -17,6 +17,8 @@
                     <div><strong>вартість однієї ночі </strong>: {{$reservation->price}}грн.</div>
                     <div><strong>дата заїзду </strong>: {{$reservation->arrival_date}}</div>
                     <div><strong>дата виїзду</strong>: {{$reservation->departure_day}}</div>
+                    <div><strong>Ім'я персони</strong>: {{$reservation->person_name}}</div>
+                    <div><strong>Пошта персони</strong>: {{$reservation->person_email}}</div>
                 </div>
                 <a href="{{route('admin.reservations.edit',$reservation->id)}}" class="btn btn-danger mt-4">Оновити резервацію</a>
                 <form action="{{route('admin.reservations.destroy',$reservation->id)}}" method="post">

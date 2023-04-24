@@ -29,6 +29,8 @@ class ReservationRequset extends FormRequest
             'price' => 'required|integer',
             'arrival_date' => 'required|date|after_or_equal:today',
             'departure_day' => 'required|date|after_or_equal:today',
+            'person_name' => 'required|min:3|max:30|string',
+            'person_email' => 'required|min:3|max:30|string',
         ];
     }
     public function messages(): array
@@ -56,6 +58,14 @@ class ReservationRequset extends FormRequest
             'departure_day.required' => 'Поле дати виїзду є обов\'язковим',
             'departure_day.date' => 'Поле дати виїзду повинно бути датою',
             'departure_day.after_or_equal' => 'Поле дати виїзду повинно не бути в минулому',
+            'person_name.required' => 'Поле імені є обов\'язковим',
+            'person_name.min' => 'Поле імені повинно бути не менше 3 символів',
+            'person_name.max' => 'Поле імені повинно бути не більше 30 символів',
+            'person_name.string' => 'Поле імені повинно складатися з букв',
+            'person_email.required' => 'Поле пошти є обов\'язковим',
+            'person_email.min' => 'Поле пошти повинно бути не менше 3 символів',
+            'person_email.max' => 'Поле пошти повинно бути не більше 30 символів',
+            'person_email.string' => 'Поле пошти повинно складатися з букв',
         ];
     }
 }

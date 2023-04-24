@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HotelCommentController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\ReservationController;
@@ -19,17 +20,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-//
-//Route::get('/admin',function (){
-//    return view('admin');
-//})->name('main');
-//
-//Route::get('/admin/hotels',function (){
-//    return view('hotels');
-//})->name('hotels');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
@@ -37,14 +27,14 @@ Auth::routes();
 Route::group([
     'as'=>'admin.',
     'prefix'=>'admin',
-    'middleware' =>'admin',   // sanctum add !!
+//    'middleware' => ['auth:sanctum'],   // sanctum add !!
+    //'middleware' =>['checkToken','auth:sanctum','admin'],   // sanctum add !!
 ],function (){
-    Route::get('/',function (){
-        return view('admin.home');
-    })->name('adminhome');
+    Route::get('/',[AdminController::class,'index'])->middleware('checkToken')->name('adminhome');
     Route::group([
         'as'=>'hotels.',
         'prefix'=>'hotels',
+        'middleware' => ['auth:sanctum']
     ],function (){
         Route::get('/',[HotelController::class,'index'])->name('index');
         Route::get('/create',[HotelController::class,'create'])->name('create');
@@ -58,6 +48,7 @@ Route::group([
     Route::group([
         'as'=>'rooms.',
         'prefix'=>'rooms',
+        //'middleware' => ['auth:sanctum']
     ],function (){
         Route::get('/create',[RoomController::class,'create'])->name('create');
         Route::post('/',[RoomController::class,'store'])->name('store');
@@ -71,6 +62,7 @@ Route::group([
     Route::group([
         'as'=>'reservations.',
         'prefix'=>'reservations',
+        'middleware' => ['auth:sanctum']
     ],function (){
         Route::get('/',[ReservationController::class,'index'])->name('index');
         Route::get('/create',[ReservationController::class,'create'])->name('create');
@@ -86,6 +78,7 @@ Route::group([
     Route::group([
         'as'=>'hotelcomments.',
         'prefix'=>'hotelcomments',
+        //'middleware' => ['auth:sanctum']
     ],function (){
         Route::get('/',[HotelCommentController::class,'index'])->name('index');
         Route::get('/create',[HotelCommentController::class,'create'])->name('create');
@@ -99,6 +92,7 @@ Route::group([
     Route::group([
         'as'=>'users.',
         'prefix'=>'users',
+        //'middleware' => ['auth:sanctum']
     ],function (){
         Route::get('/',[UserController::class,'index'])->name('index');
         Route::get('/create',[UserController::class,'create'])->name('create');

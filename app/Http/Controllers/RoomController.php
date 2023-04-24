@@ -49,7 +49,7 @@ class RoomController extends Controller
                 $room->photos()->save($photo);
             }
         }
-        return redirect()->route('admin.hotels');
+        return redirect()->route('admin.hotels.index');
     }
 
     /**

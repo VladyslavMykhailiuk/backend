@@ -30,6 +30,8 @@
             <td>{{ $reservation->price }}</td>
             <td>{{ $reservation->arrival_date }}</td>
             <td>{{ $reservation->departure_date }}</td>
+            <td>{{ $reservation->person_name }}</td>
+            <td>{{ $reservation->person_email}}</td>
         </tr>
     @endforeach
     </tbody>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthorizeController;
 use App\Http\Controllers\API\HotelCommentController;
 use App\Http\Controllers\API\HotelController;
 use App\Http\Controllers\API\ReservationController;
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/auth/login', [AuthController::class, 'login']);
 Route::post('/auth/logout', [AuthController::class, 'logout']);
 Route::post('/auth/register', [AuthController::class, 'register']);
+Route::post('/auth/check',[AuthController::class,'user'])->middleware('auth:sanctum');
 
 Route::get('/hotels',[HotelController::class,'index']);
 Route::get('/hotels/{hotel}',[HotelController::class,'show']);

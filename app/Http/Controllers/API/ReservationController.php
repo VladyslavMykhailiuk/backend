@@ -19,6 +19,8 @@ class ReservationController extends Controller
             'price' => $data['price'],
             'arrival_date' => $data['arrival_date'],
             'departure_day' => $data['departure_day'],
+            'person_name' => $data['person_name'],
+            'person_email' => $data['person_email'],
         ]);
 
         $reservations = Reservation::all();

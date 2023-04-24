@@ -72,10 +72,12 @@ class AuthController extends Controller
             ->delete();
         $token = $user->createToken($deviceName)->plainTextToken;
 
-        return [
+        return response([
             'token' => $token,
             'user' => new UserResource($user),
-        ];
+        ])->withHeaders([
+            "Authorization" => "Bearer $token"
+        ]);
     }
 
     /**
@@ -98,12 +100,14 @@ class AuthController extends Controller
         return response()->json(['message' => 'Logged out']);
     }
 
-    public function user()
+    public function user(Request $request)
     {
         if (Auth::check()) {
-            return new UserResource(Auth::user());
+            return [
+                'user' => new UserResource(Auth::user()),
+                'x-xsrf-token' => $request->headers->get('x-xsrf-token')];
         } else {
-            return response()->json(['error' => 'Unauthenticated.'], 404);
+            return response()->json(['error' => 'Unauthenticated.'], 401);
         }
     }
 }

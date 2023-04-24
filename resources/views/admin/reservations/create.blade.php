@@ -60,6 +60,20 @@
                     <span class="text-danger">{{ $errors->first('departure_day') }}</span>
                 @endif
             </div>
+            <div class="form-group">
+                <label for="person_name">дата виїзду</label>
+                <input type="text" name="person_name" class="form-control" id="person_name" placeholder="Введіть ім'я персони" value="{{ old('person_name') }}">
+                @if ($errors->has('person_name'))
+                    <span class="text-danger">{{ $errors->first('person_name') }}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="person_email">дата виїзду</label>
+                <input type="text" name="person_email" class="form-control" id="person_email" placeholder="Введіть пошту персони" value="{{ old('person_email') }}">
+                @if ($errors->has('person_email'))
+                    <span class="text-danger">{{ $errors->first('person_email') }}</span>
+                @endif
+            </div>
             <button type="submit" class="btn btn-primary mt-3">Додати</button>
         </form>
     </div>

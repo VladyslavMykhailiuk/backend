@@ -3,7 +3,6 @@
 <svg class="bi me-2" width="40" height="32">
     <use xlink:href="#bootstrap"></use>
 </svg>
-<a href="{{route('admin.adminhome')}}" class="fs-4 link-info text-decoration-none mx-5 mb-5 ">Адмін панель</a>
 </a>
 <ul class="nav nav-pills flex-column mb-auto">
     <div class="dropdown">
